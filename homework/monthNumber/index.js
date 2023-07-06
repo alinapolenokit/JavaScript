@@ -1,9 +1,9 @@
-function  getMonthByNumber(number) {
-    
+function getMonthByNumber(number) {
     if (number > 1) {
-    return months[number - 1]
+        return months[number - 1]
     }
 };
+    
 
     let month = ['January', 'February', 'March',
     'April', 'May', 'June', 'July', 'August', 
