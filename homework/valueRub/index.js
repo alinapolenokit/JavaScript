@@ -1,14 +1,27 @@
-async function getCurrencies () {
-    const response = await fetch ('https://www.cbr-xml-daily.ru/daily_json.js');
-    const data = await response.json();
-    const result = await data;
+const valueInputNode = document.querySelector('.js-value-input');
+const currencySelectorNode = document.querySelector('.js-currency-selector');
+const outputNode = document.querySelector('.js-output');
 
-    console.log(result);
-
-    console.log(result.Valute.USD.Value);
-    console.log(result.Valute.EUR.Value);
-    console.log(result.Valute.KZT.Value);
-    console.log(result.Valute.AED.Value);
+function getInput() {
+    return {
+        rub: Number(valueInputNode.value),
+        currency: currencySelectorNode.value
+    }
 }
 
-getCurrencies();
+function render(result) {
+    outputNode.innerText = result;
+}
+
+valueInputNode.addEventListener("input", function() {
+    const result = convert(getInput());
+
+    render(result);
+});
+
+currencySelectorNode.addEventListener("change", function() {
+    const result = convert(getInput());
+
+    render(result);
+});
+
